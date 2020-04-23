@@ -1,4 +1,5 @@
 #include "connexion.h"
+
 Connexion::Connexion()
 {}
 
@@ -7,8 +8,8 @@ bool Connexion::ouvrirConnexion()
 bool test=false;
     db=QSqlDatabase::addDatabase("QODBC");
 db.setDatabaseName("Source_Projet2A");
-db.setUserName("Maryem");//inserer nom de l'utilisateur
-db.setPassword("123");//inserer mot de passe de cet utilisateur
+db.setUserName("hiba");//inserer nom de l'utilisateur
+db.setPassword("hiba");//inserer mot de passe de cet utilisateur
 
 
 if (db.open()) test = true;

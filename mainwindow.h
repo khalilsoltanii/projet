@@ -1,9 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include <QMainWindow>
+#include"ticket.h"
+#include "match.h"
+
 
 #include <QMainWindow>
-#include "compte.h"
-#include "reclamation.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,40 +24,25 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-
-
-
-    void on_pushButton_Menu_clicked();
-
-    void on_pushButton_Menu2_clicked();
-
-
-
-    void on_pushButton_Ajouter_clicked();
-
-    void on_pushButton_Supprimer_clicked();
-
-    void on_pushButton_Modifier_clicked();
-
-    void on_pushButton_Ajout2_clicked();
-
-
-
-    void on_pushButton_Supprimer2_clicked();
-
-    void on_pushButton_Modifier2_clicked();
-
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
-
-    void on_pushButton_6_clicked();
-
     void on_pushButton_5_clicked();
+    void on_pushButton_6_clicked();
+     void on_pushButton_7_clicked();
+      void on_pushButton_8_clicked();
+      void on_pushButton_9_clicked();
+      void on_pushButton_10_clicked();
+      void on_pushButton_11_clicked();
+      void on_pushButton_12_clicked();
+      void on_pushButton_13_clicked();
+      void on_pushButton_14_clicked();
+      void on_pushButton_15_clicked();
+      void on_pushButton_26_clicked();
 
 private:
     Ui::MainWindow *ui;
-    Compte tmpcompte;
-    reclamation tmpreclamations;
+    Ticket tmpticket;
+    Match tmpmatch;
 };
 #endif // MAINWINDOW_H
