@@ -55,18 +55,34 @@ bool Ticket::supprimer(int iid)
 }
 
 
-bool Ticket::modifier(int iid)
+bool Ticket::modifier(int iid,QDate date,QString zone,QString type)
 {
     QSqlQuery query;
  QString res=QString::number(iid);
- query.prepare("Update ticket set ID = :id, DATEE = :datee , ZONE = :zone , TYPE = :type   WHERE ID = :id ");
+ query.prepare("Update Ticket set ID = :id, DATEE = :datee , ZONE = :zone , TYPE = :type   WHERE ID = :id ");
  query.bindValue(":id",res);
- query.bindValue(":datee",datee);
+ query.bindValue(":datee",date);
  query.bindValue(":zone",zone);
  query.bindValue(":type",type);
     return query.exec();
 
 }
+
+/*QSqlQueryModel *Ticket::tri()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+    model->setQuery("select * from Ticket order by DATEE");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("DATEE"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("ZONE"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("TYPE"));
+
+
+
+
+        return model;
+}*/
 QSqlQueryModel* Ticket::tri()
 {
     QSqlQuery * q1 = new  QSqlQuery ();
@@ -98,5 +114,19 @@ QSqlQueryModel * Ticket ::rechercherId(QString id)
     model->setHeaderData(3,Qt::Horizontal,QObject::tr("Type"));
     return model;
 }
+Ticket Ticket::getTicketById(QString id)
+{
 
+    QSqlQuery qry ;
+    Ticket ticket;
+    qry.prepare("Select ID,DATEE,ZONE,TYPE FROM Ticket WHERE ID='"+id+"'");
+    qry.exec() ;
+    while (qry.next()) {
+       ticket.set_id(qry.value(0).toInt());
+       ticket.set_datee(qry.value(1).toDate());
+       ticket.set_zone(qry.value(2).toString());
+       ticket.set_type(qry.value(3).toString());
 
+    }
+    return ticket;
+}

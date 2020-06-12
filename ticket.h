@@ -18,21 +18,26 @@ class Ticket
 public:
     Ticket();
     Ticket(int,QDate,QString,QString);
-    QDate get_datee();
-    int get_id();
-     QString get_zone();
-     QString get_type();
+    QDate get_datee(){return datee;};
+    int get_id(){return  id;};
+     QString get_zone(){return  zone;};
+     QString get_type(){return  type;};
+
+
 
      void set_id(int val){id =val ;}
      void set_datee(QDate val){ datee = val ;}
      void set_zone(QString val){zone = val ;};
+     void set_type(QString val){type = val ;};
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);
-     bool modifier(int);
+   bool modifier(int,QDate,QString,QString);
+
      QSqlQueryModel* tri();
 QSqlQueryModel * rechercher(QString zone);
 QSqlQueryModel * rechercherId(QString id);
+Ticket getTicketById(QString id);
 
 };
 
